@@ -4,28 +4,18 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
-        rows = [set() for _ in range(9)]
-        cols = [set() for _ in range(9)]
-        boxes = [set() for _ in range(9)]
-        
-        for r in range(9):
-            for c in range(9):
-                
-                num = board[r][c]
-                
-                if num == ".":
+        row_set = [set() for i in range(9)]
+        col_set = [set() for i in range(9)]
+        box_set = [set() for i in range(9)]
+
+        for i in range(9):
+            for j in range(9):
+                cur = board[i][j]
+                if cur == '.':
                     continue
-                
-                box_index = (r // 3) * 3 + (c // 3)
-                
-                if (num in rows[r] or
-                    num in cols[c] or
-                    num in boxes[box_index]):
+                if cur in row_set[i] or cur in col_set[j] or cur in box_set[(i//3) * 3 + j//3]:
                     return False
-                
-                rows[r].add(num)
-                cols[c].add(num)
-                boxes[box_index].add(num)
-        
-        return True
-        
+                row_set[i].add(cur)
+                col_set[j].add(cur)
+                box_set[(i//3) * 3 + j//3].add(cur)
+        return True 
