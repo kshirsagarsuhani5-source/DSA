@@ -24,6 +24,7 @@ class Solution(object):
             
             return first
         
+        
         def findLast(nums, target):
             left, right = 0, len(nums) - 1
             last = -1
@@ -40,6 +41,7 @@ class Solution(object):
                 
                 else:
                     right = mid - 1
+            
             return last
         
         return [findFirst(nums, target), findLast(nums, target)]
