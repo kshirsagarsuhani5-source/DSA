@@ -10,25 +10,23 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        dummy = ListNode(0)
-        current = dummy
-        
+        dummy = ListNode()
+        tail = dummy
+
         while list1 and list2:
-            
-            if list1.val < list2.val:
-                current.next = list1
+            if list1.val <= list2.val:
+                tail.next = list1
                 list1 = list1.next
             else:
-                current.next = list2
+                tail.next = list2
                 list2 = list2.next
-            
-            current = current.next
-        
-        # Attach remaining nodes
+
+            tail = tail.next
+
         if list1:
-            current.next = list1
-        else:
-            current.next = list2
-        
+            tail.next = list1
+
+        if list2:
+            tail.next = list2 
+
         return dummy.next
-        
