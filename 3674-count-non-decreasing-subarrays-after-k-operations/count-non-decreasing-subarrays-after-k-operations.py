@@ -5,7 +5,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        from collections import deque
+       
         ans = 0
         cost = 0
 
